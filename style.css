@@ -1,0 +1,7 @@
+/* CSS DOCUMENT */
+
+* { padding: 0px; margin: 0px auto; }
+html, body { background-color: #FFFFFF; font:normal 9pt "Century Gothic", Verdana, Arial; color:#222222; }
+
+#wrapper { margin-top:50px; }
+#wrapper #heading { font-size:48pt; }
