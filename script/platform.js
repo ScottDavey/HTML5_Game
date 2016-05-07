@@ -1,7 +1,7 @@
 /**/
 
 function Platform (x, y) {
-	this.pos			= {'x': x, 'y': y};
+	this.pos			= {'x': Math.round(x), 'y': Math.round(y)};
 	this.size			= {'width': 200, 'height': 20};	// Hard coding, for now
 	this.type			= 'platform';
 }

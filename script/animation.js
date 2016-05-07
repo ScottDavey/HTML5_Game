@@ -22,9 +22,10 @@ function Animation (path, pos, frameSize, sheetWidth, animationSeq, speed, dir) 
 /// update
 /// This function is responsible for changing information about how an image is being used
 /// Can be called from any update function
-Animation.prototype.update = function (pos, animationSeq) {
-	this.pos 			= pos;
-	this.clip.top		= animationSeq * this.frameSize;
+Animation.prototype.update = function (pos, animationSeq, speed) {
+	this.pos 		= pos;
+	this.clip.top	= animationSeq * this.frameSize;
+	this.speed		= speed;
 };
 
 /// animate

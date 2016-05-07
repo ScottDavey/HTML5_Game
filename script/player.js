@@ -2,6 +2,7 @@
 
 function Player (num) {
 	this.pos					= {'x': 100, 'y': -200};	// Fall in from the sky
+	this.previousPos			= {};
 	this.size					= {'width': 50, 'height': 50};
 	this.walkSpeed				= 100;
 	this.runSpeed				= 100;
@@ -55,7 +56,8 @@ Player.prototype.handleCollision = function () {
 		this.isOnGround = true;
 	}
 
-	/*
+	// Player Collision
+
 	// Platform collision (only tops)
 	playerLeft 		= this.pos.x;
 	playerRight		= this.pos.x + this.size.width;
@@ -76,7 +78,6 @@ Player.prototype.handleCollision = function () {
 		}
 
 	}
-	*/
 
 };
 
@@ -124,18 +125,21 @@ Player.prototype.update = function (platformArr) {
 	if (this.isJumping) {
 		// Set animation sequence based on the player's facing direction
 		this.animationSeq = (this.dir === 'RIGHT') ? 2 : 5;
+		this.animationSpeed = 1;
 	} else {
 		// Check if player is Idle
 		if (this.velocity.x < 1 && this.velocity.x > -1) {
 			// Set animation sequence based on the player's facing direction
 			this.animationSeq = (this.dir === 'RIGHT') ? 0 : 3;
+			this.animationSpeed = 0.3;
 		} else {
 			// Set animation sequence based on the player's facing direction
 			this.animationSeq = (this.dir === 'RIGHT') ? 1 : 4;
+			this.animationSpeed = 0.05;
 		}
 	}
 	// Update the player
-	this.playerSprite.update(this.pos, this.animationSeq);
+	this.playerSprite.update(this.pos, this.animationSeq, this.animationSpeed);
 
 };
 
