@@ -5,7 +5,7 @@ var main = {
 		this.isRunning			= true;
 		this.FPS				= 30;
 		this.CANVAS_WIDTH		= 1000;
-		this.CANVAS_HEIGHT		= 455;
+		this.CANVAS_HEIGHT		= 500;
 		this.canvas				= $('#gameArea')[0];
 		this.context			= this.canvas.getContext('2d');;
 		this.level				= new Level();
@@ -22,6 +22,7 @@ var main = {
 		window.addEventListener('keydown', function (e) { Input.Key.onKeyDown(e); }, false);
 		this.canvas.addEventListener('mouseup', function (e) { Input.Mouse.OnMouseUp(e); }, false);
 		this.canvas.addEventListener('mousedown', function (e) { Input.Mouse.OnMouseDown(e); }, false);
+		this.canvas.addEventListener('mousemove', function (e) { Input.Mouse.OnMouseMove.SetPosition(e); }, false);
 
 		// Main loop
 		main.gameLoop();

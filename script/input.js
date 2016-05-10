@@ -21,6 +21,23 @@ var Input = {
 			Input.Key._isPressed[e.keyCode] = true;
 		},
 		onKeyUp: function (e) {
+			var allAudio;
+			if (e.keyCode === 80) {
+				allAudio = $('audio');
+				console.log(allAudio);
+				// Pause or un-pause the game
+				if (main.isRunning) {
+					main.isRunning = false;
+					$.each($('audio'), function () {
+					    this.pause();
+					});
+				} else {
+					main.isRunning = true;
+					$.each($('audio'), function () {
+						this.play();
+					});
+				}
+			}
 			delete Input.Key._isPressed[e.keyCode];
 		}
 	},
@@ -43,8 +60,15 @@ var Input = {
 		},
 		OnMouseUp: function (e) {
 			delete Input.Mouse._isPressed[e.button];
+		},
+		OnMouseMove: {
+			pos: {x: 0, y: 0},
+			GetPosition: function () { return Input.Mouse.OnMouseMove.pos; },
+			SetPosition: function (e) {
+				Input.Mouse.OnMouseMove.pos.x = e.offsetX;
+				Input.Mouse.OnMouseMove.pos.y = e.offsetY;
+			}
 		}
-
 	},
 	lockInput: function (isLocked) {
 		//return

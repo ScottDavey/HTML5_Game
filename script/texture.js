@@ -8,8 +8,8 @@ function Texture (path, pos, size) {
 	this.img	= this.img[0];
 }
 
-Texture.prototype.update = function () {
-
+Texture.prototype.update = function (pos) {
+	this.pos = pos;
 };
 
 Texture.prototype.draw = function () {
